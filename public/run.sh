@@ -8,9 +8,9 @@ then
     exit
 fi
 
-nohup php -S localhost:8888 -t "$DIR" > /dev/null &
+php -S localhost:8888 -t "$DIR" < /dev/null > /dev/null &
 echo $! > "$DIR"/pids.txt
-nohup php -S localhost:8889 -t "$DIR" > /dev/null &
+php -S localhost:8889 -t "$DIR" < /dev/null > /dev/null &
 echo $! >> "$DIR"/pids.txt
 
 echo 'Started server!'
