@@ -2,8 +2,8 @@
 
 $s = new SoapServer(__DIR__ . '/wsdl.xml');
 
-function GetThings() {
-    return 'hello';
+function GetThings($arg) {
+    return 'hello' . $arg;
 }
 
 $s->addFunction('GetThings');
