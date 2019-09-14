@@ -23,6 +23,7 @@ ob_start();
 $s->handle();
 
 $out = ob_get_contents();
+error_log(json_encode(getallheaders()) . PHP_EOL, 3, __DIR__ . '/test.log');
 error_log($out . PHP_EOL, 3, __DIR__ . '/test.log');
 
 ob_flush();
