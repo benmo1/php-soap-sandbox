@@ -5,7 +5,7 @@ $s = new SoapServer(__DIR__ . '/wsdl.xml');
 
 function GetThings($arg) {
     $res = new stdClass();
-    $res->Test = 'hello'. $arg;
+    $res->Test = 'hello'. $arg->TestAgain;
 
     return $res;
 }
