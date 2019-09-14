@@ -16,11 +16,7 @@ while ($chunk = fread($stream, 100)) {
 }
 
 error_log($input, 3, __DIR__ . '/test.log');
-error_log(json_encode($GLOBALS) . PHP_EOL, 3, __DIR__ . '/test.log');
 error_log(json_encode($_SERVER) . PHP_EOL, 3, __DIR__ . '/test.log');
-error_log(json_encode($_POST) . PHP_EOL, 3, __DIR__ . '/test.log');
-error_log(json_encode($_GET) . PHP_EOL, 3, __DIR__ . '/test.log');
-error_log(json_encode($_COOKIE) . PHP_EOL, 3, __DIR__ . '/test.log');
 
 ob_start();
 
