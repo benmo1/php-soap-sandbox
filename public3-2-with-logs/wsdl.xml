@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        targetNamespace="hahahahahahahahaha"
+        xmlns:tns="hahahahahahahahaha"
+>
+    <wsdl:types>
+        <xs:schma elementFormDefault="qualified" targetNamespace="hahahahahahahahaha">
+            <xs:element name="Payload">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" maxOccurs="1" name="Test" type="xs:string" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schma>
+    </wsdl:types>
+    <wsdl:message name="DoStuffRequest">
+        <wsdl:part name="term"/>
+    </wsdl:message>
+    <wsdl:message name="DoStuffResponse">
+        <wsdl:part name="value" element="tns:Payload"/>
+    </wsdl:message>
+    <wsdl:portType name="MySoap">
+        <wsdl:operation name="GetThings">
+            <wsdl:input message="tns:DoStuffRequest" />
+            <wsdl:output message="tns:DoStuffResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="MySoap" type="tns:MySoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="GetThings">
+            <soap:operation soapAction="http://localhost:8889/other_world.php" style="document" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Mine">
+        <wsdl:port name="MySoap" binding="tns:MySoap">
+            <soap:address location="http://localhost:8889/other_world.php" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
